@@ -14,9 +14,12 @@ jobs:
       libraryName: RoutingKit
       mingwTargetZip: RoutingKit-${{ github.ref_name }}-mingw64-x86_64-posix-seh-rev0-8.1.0.zip
     steps:
-      - name: check mingw version
-        run: gcc --version
-        
+      - name: Install MSYS2
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          install: make autoconf automake libtool autogen perl
+          
       - name: git clone
         shell: cmd
         run: git clone --recursive https://github.com/RoutingKit/RoutingKit.git # && cd RoutingKit && git checkout ${{ env.tagName }}
@@ -30,16 +33,13 @@ jobs:
 #         run: cd /d ${{ github.workspace }} && curl https://github.com/Kitware/CMake/releases/download/v3.24.0/cmake-3.24.0-windows-x86_64.zip -L --output cmake-3.24.0-windows-x86_64.zip && dir && 7z.exe x cmake-3.24.0-windows-x86_64.zip
         
       - name: set PATH, check mingw version, cmake generate, build and install
-        shell: cmd
+        shell: msys2 {0}
         run: |
-          set PATH=^
-          ${{ github.workspace }}\mingw64;^
-          ${{ github.workspace }}\mingw64\bin;^
-          ${{ github.workspace }}\cmake-3.24.0-windows-x86_64\bin;
-          cd RoutingKit &&^
-          gcc --version &&^
-          dir /s &&^
-          mingw32-make
+            workspace=$(pwd) &&
+            export PATH="$workspace/mingw64:$workspace/mingw64/bin:$workspace/msys64/usr/bin:/usr/bin" &&
+            cd RoutingKit && 
+            g++ --version && 
+            mingw32-make.exe
             
       - name: Archive Release
         uses: thedoctor0/zip-release@master
