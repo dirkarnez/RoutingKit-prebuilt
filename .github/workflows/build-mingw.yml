@@ -39,7 +39,7 @@ jobs:
             export PATH="$workspace/mingw64:$workspace/mingw64/bin:$workspace/msys64/usr/bin:/usr/bin" &&
             cd RoutingKit && 
             g++ --version &&
-            mingw32-make CFLAGS="-Wall -DNDEBUG -DROUTING_KIT_NO_ALIGNED_ALLOC -fno-asynchronous-unwind-tables -march=native -ffast-math -std=c++11 -O3 -fPIC -Iinclude"
+            mingw32-make CFLAGS="-Wall -DNDEBUG -DROUTING_KIT_ASSUME_LITTLE_ENDIAN -DROUTING_KIT_NO_ALIGNED_ALLOC -fno-asynchronous-unwind-tables -march=native -ffast-math -std=c++11 -O3 -fPIC -Iinclude"
             
       - name: Archive Release
         uses: thedoctor0/zip-release@master
