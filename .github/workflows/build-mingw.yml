@@ -27,7 +27,7 @@ jobs:
       - name: curl x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0
         shell: cmd
         run: | 
-          aria2c https://udomain.dl.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-posix/sjlj/x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0.7z &&^
+          aria2c https://downloads.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-posix/sjlj/x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0.7z?ts=gAAAAABkYL41r7iBfoeSkBbVkIksnxmvqJwsLGX-laaYb8eGFQcu4z2ZLSz_Izk00iVMWPLqO-354RHd3eLphSE7Rnr71wXwiw%3D%3D&use_mirror=udomain&r= &&^
           7z.exe x x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0.7z
           
 #       - name: curl cmake-3.24.0-windows-x86_64.zip
