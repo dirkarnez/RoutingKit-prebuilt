@@ -39,7 +39,10 @@ jobs:
             export PATH="$workspace/mingw64:$workspace/mingw64/bin:$workspace/msys64/usr/bin:/usr/bin" &&
             cd RoutingKit && 
             g++ --version &&
-            make CFLAGS="$CFLAGS -DROUTING_KIT_NO_ALIGNED_ALLOC"
+            echo $CFLAGS &&
+            export CFLAGS="$CFLAGS -DROUTING_KIT_NO_ALIGNED_ALLOC"
+            echo $CFLAGS &&
+            make CFLAGS=$CFLAGS
             
       - name: Archive Release
         uses: thedoctor0/zip-release@master
