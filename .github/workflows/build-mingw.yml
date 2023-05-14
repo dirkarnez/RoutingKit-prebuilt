@@ -38,6 +38,7 @@ jobs:
             ${{ github.workspace }}\cmake-3.24.0-windows-x86_64\bin;^
             cd RoutingKit &&^
             gcc --version &&^
+            
             mingw32-make
             
       - name: Archive Release
