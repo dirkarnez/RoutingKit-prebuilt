@@ -32,14 +32,14 @@ jobs:
       - name: set PATH, check mingw version, cmake generate, build and install
         shell: cmd
         run: |
-            set PATH=^
-            ${{ github.workspace }}\mingw64;^
-            ${{ github.workspace }}\mingw64\bin;^
-            ${{ github.workspace }}\cmake-3.24.0-windows-x86_64\bin;^
-            cd RoutingKit &&^
-            gcc --version &&^
-            dir /s &&^
-            mingw32-make
+          set PATH=^
+          ${{ github.workspace }}\mingw64;^
+          ${{ github.workspace }}\mingw64\bin;^
+          ${{ github.workspace }}\cmake-3.24.0-windows-x86_64\bin;
+          cd RoutingKit &&^
+          gcc --version &&^
+          dir /s &&^
+          mingw32-make
             
       - name: Archive Release
         uses: thedoctor0/zip-release@master
