@@ -38,8 +38,9 @@ jobs:
             workspace=$(pwd) &&
             export PATH="$workspace/mingw64:$workspace/mingw64/bin:$workspace/msys64/usr/bin:/usr/bin" &&
             cd RoutingKit && 
-            g++ --version && 
-            make CPPFLAGS=-DROUTING_KIT_NO_ALIGNED_ALLOC
+            g++ --version &&
+            export CFLAGS="-DROUTING_KIT_NO_ALIGNED_ALLOC" &&
+            make
             
       - name: Archive Release
         uses: thedoctor0/zip-release@master
