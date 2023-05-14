@@ -36,6 +36,7 @@ jobs:
             ${{ github.workspace }}\mingw64;^
             ${{ github.workspace }}\mingw64\bin;^
             ${{ github.workspace }}\cmake-3.24.0-windows-x86_64\bin;^
+            cd RoutingKit &&^
             gcc --version &&^
             mingw32-make
             
