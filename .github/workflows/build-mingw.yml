@@ -25,26 +25,9 @@ jobs:
         run: git clone --recursive https://github.com/RoutingKit/RoutingKit.git # && cd RoutingKit && git checkout ${{ env.tagName }}
         
       - name: curl x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0
-        shell: bash
-        run:  |
-          curl \
-          -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7' \
-          -H 'Accept-Language: en-US,en;q=0.9' \
-          -H 'Connection: keep-alive' \
-          -H 'Cookie: _gid=GA1.2.1953743523.1684060268; __adroll_fpc=9a1171db0b011c600f73dca0476ac4ef-1684060269968; _fbp=fb.1.1684060270118.610359560; __gads=ID=3a0ad16a2bacc7d5:T=1684060269:S=ALNI_MZ53rnRcNBejnmN4e7ywUbR8AKcag; __gpi=UID=00000c05ccf977f2:T=1684060269:RT=1684060269:S=ALNI_MZWRr5s7_JxK_R5seyPwfU5MIAg_Q; _ga_1H226E4E4L=GS1.1.1684060268.1.1.1684060722.0.0.0; _ga=GA1.1.1640004887.1684060268; __ar_v4=4MGVWK2IPRDEZLJN3LDQWF%3A20230513%3A17%7CEPGGWMNOENDCJMRYE2IIFV%3A20230513%3A17%7C3QEU55AVURGVNFYKGPRLHU%3A20230513%3A17' \
-          -H 'If-Range: "5b06dc57-325726e"' \
-          -H 'Range: bytes=26377111-26377111' \
-          -H 'Referer: https://sourceforge.net/' \
-          -H 'Sec-Fetch-Dest: document' \
-          -H 'Sec-Fetch-Mode: navigate' \
-          -H 'Sec-Fetch-Site: same-site' \
-          -H 'Sec-Fetch-User: ?1' \
-          -H 'Upgrade-Insecure-Requests: 1' \
-          -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36' \
-          -H 'sec-ch-ua: "Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"' \
-          -H 'sec-ch-ua-mobile: ?0' \
-          -H 'sec-ch-ua-platform: "Windows"' \
-          'https://udomain.dl.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-posix/sjlj/x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0.7z' -L -O -J && \
+        shell: cmd
+        run: | 
+          aria2c https://udomain.dl.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-posix/sjlj/x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0.7z &&^
           7z.exe x x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0.7z
           
 #       - name: curl cmake-3.24.0-windows-x86_64.zip
